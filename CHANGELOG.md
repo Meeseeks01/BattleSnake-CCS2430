@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/Meeseeks01/BattleSnake-CCS2430/compare/v1.10.1...v1.10.2) (2025-04-06)
+
+
+### Bug Fixes
+
+* here ([711c96a](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/711c96af7f0313f72227a2e8aead3b2acc851f09))
+
 ### [1.10.1](https://github.com/Meeseeks01/BattleSnake-CCS2430/compare/v1.10.0...v1.10.1) (2025-04-06)
 
 ## [1.10.0](https://github.com/Meeseeks01/BattleSnake-CCS2430/compare/v1.9.0...v1.10.0) (2025-04-06)
