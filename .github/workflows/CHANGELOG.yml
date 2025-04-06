@@ -1,41 +1,33 @@
-name: Generate Changelog
+name: Version & Changelog
 
 on:
   push:
-    branches:
-      - '**' #dsfsdss
+    branches-ignore:
+      - main
+      - dev
 
 jobs:
   changelog:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Needed for tags
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      - name: Install conventional-changelog-cli
-        run: npm install -g conventional-changelog-cli
+      - name: Install dependencies
+        run: npm install --save-dev standard-version
 
-      - name: Generate or update CHANGELOG.md
-        run: |
-          if [ -f CHANGELOG.md ]; then
-            echo "Updating existing CHANGELOG.md..."
-            conventional-changelog -p angular -i CHANGELOG.md -s -r 0
-          else
-            echo "Creating new CHANGELOG.md..."
-            conventional-changelog -p angular -o CHANGELOG.md -r 0
-          fi
+      - name: Bump version & generate changelog
+        run: npx standard-version
 
-      - name: Commit and push changes
+      - name: Commit & push version bump
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add CHANGELOG.md
-          git commit -m "docs: update CHANGELOG.md" || echo "No changes to commit"
-          git push
+          git push --follow-tags origin ${{ github.ref_name }}
