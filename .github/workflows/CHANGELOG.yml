@@ -6,7 +6,7 @@ on:
       - '**'
   pull_request:
     branches:
-      - '**' #here things get weird
+      - '**' #here things get weirddd
 
 jobs:
   changelog:
