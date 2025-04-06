@@ -1,6 +1,6 @@
 {
   "name": "starter-snake-javascript",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "An official Battlesnake template written in JavaScript. Get started at play.battlesnake.com.",
   "type": "module",
   "main": "index.js",
