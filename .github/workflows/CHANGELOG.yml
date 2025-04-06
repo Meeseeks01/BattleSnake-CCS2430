@@ -1,19 +1,21 @@
-name: Version & Changelog
+name: Generate Changelog
 
 on:
   push:
-    branches-ignore:
-      - main
-      - dev
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   changelog:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # N
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -21,13 +23,19 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm install --save-dev standard-version
+        run: npm install
 
-      - name: Bump version & generate changelog
-        run: npx standard-version
+      - name: Install standard-version globally
+        run: npm install -g standard-version
 
-      - name: Commit & push version bump
+      - name: Configure Git identity
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git push --follow-tags origin ${{ github.ref_name }}
+
+      - name: Run standard-version
+        run: npx standard-version
+
+      - name: Push version bump and changelog
+        run: |
+          git push --follow-tags origin HEAD:main
