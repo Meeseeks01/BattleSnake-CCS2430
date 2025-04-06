@@ -3,10 +3,10 @@ name: Generate Changelog
 on:
   push:
     branches:
-      - main
+      - '**'
   pull_request:
     branches:
-      - main #rrrrrqrtereett
+      - '**' #rrrrrqrtereett
 
 jobs:
   changelog:
