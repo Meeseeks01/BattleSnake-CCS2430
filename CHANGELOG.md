@@ -21,6 +21,7 @@
 * changingState for BPC-2 #In Progress ([9d31bd6](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/9d31bd60944ef47e3b3c9debd8d8e478080d32f9))
 * lets take it somewhere for BPC-2 ([82eefdd](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/82eefdd741584308daca5f1248c127e6feb3dfae))
 * testEffortThird for BPC-2 ([8d344df](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/8d344df7bb57bd48f2c8575fae050858b558b99b))
+* testingChangeLogYalm ([606440d](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/606440dc9de0b753c981ecf0cb0122319046c720))
 
 
 ### Reverts
