@@ -34,7 +34,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
       - name: Run standard-version (skip tag creation)
-        run: npx standard-version --skip.tag
+        run: npx standard-version
 
       - name: Push version bump and changelog
         run: |
