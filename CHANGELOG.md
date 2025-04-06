@@ -20,6 +20,7 @@
 * Add the changelog.yml BCP-2 ([828e261](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/828e26184ea857ad4d6af5c29ed2b82df0d7d4f9))
 * changingState for BPC-2 #In Progress ([9d31bd6](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/9d31bd60944ef47e3b3c9debd8d8e478080d32f9))
 * lets take it somewhere for BPC-2 ([82eefdd](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/82eefdd741584308daca5f1248c127e6feb3dfae))
+* potato potato oh one potato ([121e91a](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/121e91adbd4f8ecd79e575860ebc63e9097b7987))
 * testEffortThird for BPC-2 ([8d344df](https://github.com/Meeseeks01/BattleSnake-CCS2430/commit/8d344df7bb57bd48f2c8575fae050858b558b99b))
 
 
