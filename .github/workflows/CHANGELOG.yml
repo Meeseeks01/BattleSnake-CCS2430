@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Needed for tags
+          fetch-depth: 0  # N
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
