@@ -6,7 +6,7 @@ on:
       - '**'
   pull_request:
     branches:
-      - '**' #here get some moreeess
+      - '**' #here get some moreeessee
 
 jobs:
   changelog:
