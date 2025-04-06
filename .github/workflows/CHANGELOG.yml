@@ -33,7 +33,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Run standard-version (skip tag creation)
+      - name: Run standard-version
         run: npx standard-version
 
       - name: Push version bump and changelog
