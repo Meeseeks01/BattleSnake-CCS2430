@@ -6,7 +6,7 @@ on:
       - '**'
   pull_request:
     branches:
-      - '**' #fds
+      - '**'
 
 jobs:
   changelog:
@@ -33,9 +33,10 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Run standard-version
-        run: npx standard-version
+      - name: Run standard-version (skip tag creation)
+        run: npx standard-version --skip.tag
 
       - name: Push version bump and changelog
         run: |
-          git push --follow-tags origin HEAD:main
+          current_branch=$(git rev-parse --abbrev-ref HEAD)
+          git push --follow-tags origin "$current_branch"
