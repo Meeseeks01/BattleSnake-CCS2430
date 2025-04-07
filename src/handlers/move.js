@@ -1,7 +1,14 @@
+
+import checkWallCollision from '../logic/collision/boundaries.js';
+import checkSelfCollision from '../logic/collision/selfCollision.js';
+import checkOtherSnakesCollision from '../logic/collision/otherSnakes.js';
+
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
 // See https://docs.battlesnake.com/api/example-move for available data
 export default function move(gameState) {
+
+    printBoard(gameState.board);
 
     let isMoveSafe = {
       up: true,
@@ -30,12 +37,18 @@ export default function move(gameState) {
     // TODO: Step 1 - Prevent your Battlesnake from moving out of bounds
     // boardWidth = gameState.board.width;
     // boardHeight = gameState.board.height;
-  
+    isMoveSafe = checkWallCollision(gameState, isMoveSafe);
+
     // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
     // myBody = gameState.you.body;
-  
+    isMoveSafe = checkSelfCollision(gameState, isMoveSafe);
+
     // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
     // opponents = gameState.board.snakes;
+    isMoveSafe = checkOtherSnakesCollision(gameState, isMoveSafe);
+
+  
+
   
     // Are there any safe moves left?
     const safeMoves = Object.keys(isMoveSafe).filter(key => isMoveSafe[key]);
@@ -52,4 +65,29 @@ export default function move(gameState) {
   
     console.log(`MOVE ${gameState.turn}: ${nextMove}`)
     return { move: nextMove };
+  }
+
+  function printBoard(board) {
+    const width = board.width;
+    const height = board.height;
+    let grid = Array.from({ length: height }, () => Array(width).fill('.'));
+  
+    // Mark food on the board with adjusted y-coordinate
+    board.food.forEach(({ x, y }) => {
+      grid[height - 1 - y][x] = chalk.red('F');
+    });
+  
+    // Mark snakes on the board with adjusted y-coordinate
+    board.snakes.forEach(snake => {
+      snake.body.forEach(({ x, y }, index) => {
+        if (index === 0) {
+          grid[height - 1 - y][x] = chalk.green('H'); // Snake head
+        } else {
+          grid[height - 1 - y][x] = chalk.blue('S'); // Snake body
+        }
+      });
+    });
+  
+    // Print the board
+    console.log('\n' + grid.map(row => row.join(' ')).join('\n'));
   }
