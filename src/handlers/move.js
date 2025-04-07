@@ -2,6 +2,7 @@
 import checkWallCollision from '../logic/collision/boundaries.js';
 import checkSelfCollision from '../logic/collision/selfCollision.js';
 import checkOtherSnakesCollision from '../logic/collision/otherSnakes.js';
+import chalk from 'chalk';
 
 // move is called on every turn and returns your next move
 // Valid moves are "up", "down", "left", or "right"
