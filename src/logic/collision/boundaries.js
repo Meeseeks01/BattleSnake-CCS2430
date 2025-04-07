@@ -1,5 +1,5 @@
 export default function checkWallCollision(gameState, isMoveSafe) {
-    //BPC-6 2 Prevent Wall Collisions in Movement Logic
+    
    const myHead = gameState.you.head;  
    const boardWidth = gameState.board.width; //already existed
    const boardHeight = gameState.board.height; //already existed
