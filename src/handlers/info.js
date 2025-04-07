@@ -6,9 +6,9 @@ export default function info() {
   //BattleSnake appearance!!!
     return {
       apiversion: "1",
-      author: "",       // TODO: Your Battlesnake Username
-      color: "#888888", // TODO: Choose color
-      head: "default",  // TODO: Choose head
-      tail: "default",  // TODO: Choose tail
+      author: "El",       // TODO: Your Battlesnake Username
+      color: "#ff831d", // TODO: Choose color
+      head: "evil",  // TODO: Choose head
+      tail: "curled",  // TODO: Choose tail
     };
   }
