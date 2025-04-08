@@ -13,21 +13,37 @@ export default function checkOtherSnakesCollision(gameState, isMoveSafe) {
   for (const snake of opponents) {
     if (snake.id === gameState.you.id) continue; // skip self
 
-    // Check all body segments of the opponent snake
+    // Get opponent's direction based on the last two head positions
+    const opponentHead = snake.body[0];
+    const opponentNeck = snake.body[1];
+    let predictedHead = { x: opponentHead.x, y: opponentHead.y };
+
+    // Predict the next move of the opponent
+    if (opponentNeck) {
+      if (opponentNeck.x < opponentHead.x) {  // Opponent is moving right
+        predictedHead.x += 1;
+      } else if (opponentNeck.x > opponentHead.x) { // Opponent is moving left
+        predictedHead.x -= 1;
+      } else if (opponentNeck.y < opponentHead.y) { // Opponent is moving up
+        predictedHead.y += 1;
+      } else if (opponentNeck.y > opponentHead.y) { // Opponent is moving down
+        predictedHead.y -= 1;
+      }
+    }
+
+    // Check if any move would land on the predicted head position
+    for (const [direction, coord] of Object.entries(possibleMoves)) {
+      if (coord.x === predictedHead.x && coord.y === predictedHead.y) {
+        isMoveSafe[direction] = false; // mark unsafe if on predicted head position
+      }
+    }
+
+    // Check if any move would land on the opponent's body
     for (const segment of snake.body) {
       for (const [direction, coord] of Object.entries(possibleMoves)) {
         if (coord.x === segment.x && coord.y === segment.y) {
           isMoveSafe[direction] = false; // mark unsafe if on body
         }
-      }
-    }
-
-    // **Add head-to-head prevention**
-    const opponentHead = snake.body[0]; // head of the opponent
-    for (const [direction, coord] of Object.entries(possibleMoves)) {
-      // If the move would land on the opponent's head, mark it unsafe
-      if (coord.x === opponentHead.x && coord.y === opponentHead.y) {
-        isMoveSafe[direction] = false;
       }
     }
   }
